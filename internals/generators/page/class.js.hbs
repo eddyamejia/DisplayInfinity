@@ -1,0 +1,35 @@
+/**
+*
+* {{ properCase name }}Page
+*
+*/
+
+import React from 'react';
+{{#if wantMessages}}
+import { FormattedMessage } from 'react-intl';
+{{/if}}
+// import styled from 'styled-components';
+// import * as Styled from './Styled';
+
+{{#if wantMessages}}
+import messages from './messages';
+{{/if}}
+
+// eslint-disable-next-line react/prefer-stateless-function
+class {{ properCase name }}Page extends {{{ type }}} {
+  render() {
+    return (
+      <div>
+      {{#if wantMessages}}
+        <FormattedMessage {...messages.header} />
+      {{/if}}
+      </div>
+    );
+  }
+}
+
+{{ properCase name }}Page.propTypes = {
+
+};
+
+export default {{ properCase name }}Page;

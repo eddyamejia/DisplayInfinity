@@ -1,0 +1,71 @@
+import { takeLatest, call, put } from 'redux-saga/effects';
+
+import { storage } from 'services';
+
+import * as constants from './constants';
+import * as actions from './actions';
+import * as api from './api';
+
+{{!-- import { fakePromise } from 'utils'; --}}
+
+// const syncCache = function* syncCache(data = null) {
+//   try {
+//     const state = data || (yield select()).getIn(['{{ camelCase name }}', 'data']).toJS();
+//     yield call(storage.setItem, constants.CACHE.DATA, state);
+//   } catch (e) {
+//     throw e;
+//   }
+// }
+
+const fetchSaga = function* fetchSaga({ payload }) {
+  const cache = (yield call(storage.getItem, constants.CACHE.DATA)) || [];
+  try {
+    yield put(actions.fetchSuccess({ data: cache }));
+    const data = yield call(api.fetch, payload);
+    // yield call(syncCache, data);
+    yield put(actions.fetchSuccess(data));
+  } catch (e) {
+    yield put(actions.fetchFailure(e));
+  }
+}
+
+const addSaga = function* addSaga({ payload }) {
+  try {
+    const data = yield call(api.add, payload);
+    yield put(actions.addSuccess(data));
+  } catch (e) {
+    yield put(actions.addFailure(e));
+  }
+}
+
+const editSaga = function* editSaga({ payload }) {
+  try {
+    const data = yield call(api.edit, payload);
+    yield put(actions.editSuccess(data));
+  } catch (e) {
+    yield put(actions.editFailure(e));
+  }
+}
+
+const removeSaga = function* removeSaga({ payload }) {
+  try {
+    const data = yield call(api.remove, payload);
+    yield put(actions.removeSuccess(data));
+  } catch (e) {
+    yield put(actions.removeFailure(e));
+  }
+}
+
+let didRun = false;
+export const default{{ properCase name }} = function* default{{ properCase name }}Saga() {
+  if (didRun) {
+    return;
+  }
+   didRun = true;
+   yield takeLatest(constants.ADD, addSaga);
+   yield takeLatest(constants.EDIT, editSaga);
+   yield takeLatest(constants.FETCH, fetchSaga);
+   yield takeLatest(constants.REMOVE, removeSaga);
+}
+
+export default default{{ properCase name }};

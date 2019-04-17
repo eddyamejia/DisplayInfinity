@@ -1,0 +1,33 @@
+/**
+*
+* {{ properCase name }}
+*
+*/
+
+import React from 'react';
+import { View, Text } from 'react-native';
+// import PropTypes from 'prop-types';
+{{#if wantMessages}}
+import Message from 'rn-hgl/components ';
+{{/if}}
+
+{{#if wantMessages}}
+import messages from './messages';
+{{/if}}
+import styles from './styles';
+
+function {{ properCase name }}() {
+  return (
+    <View style={styles.container}>
+      <Text>{{ properCase name }} Component</Text>
+    {{#if wantMessages}}
+      <Message {...messages.header} />
+    {{/if}}
+    </View>
+  );
+}
+
+{{ properCase name }}.propTypes = {};
+{{ properCase name }}.defaultProps = {};
+
+export default {{ properCase name }};

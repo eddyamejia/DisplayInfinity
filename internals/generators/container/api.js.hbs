@@ -1,0 +1,31 @@
+/**
+ *
+ * {{properCase name }} Api
+ *
+ */
+
+import { api } from 'services';
+
+export const fetch = (body) => api({
+  url: '/api/{{ lowerCase name }}',
+  method: 'GET',
+  body,
+});
+
+export const add = (body) => api({
+  url: '/api/{{ lowerCase name }}/add',
+  method: 'POST',
+  body,
+});
+
+export const edit = (body) => api({
+  url: '/api/{{ lowerCase name }}/edit',
+  method: 'POST',
+  body,
+});
+
+export const remove = (body) => api({
+  url: '/api/{{ lowerCase name }}/remove',
+  method: 'POST',
+  body,
+});

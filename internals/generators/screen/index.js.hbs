@@ -1,0 +1,57 @@
+/*
+ *
+ * {{properCase name }}
+ *
+ */
+
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import PropTypes from 'prop-types';
+{{#if wantMessages}}
+import { Message } from 'rn-hgl/components';
+{{/if}}
+
+{{#if connectContainer}}
+import { with{{properCase connectContainer }} } from 'containers/{{ properCase connectContainer }}';
+{{/if}}
+
+import PageView from 'components/PageView'
+
+{{#if wantMessages}}
+import messages from './messages';
+{{/if}}
+import styles from './styles';
+
+
+// eslint-disable-next-line react/prefer-stateless-function
+export class {{ properCase name }}Screen extends Component {
+  render() {
+    const { navigation } = this.props;
+    return (
+      <PageView navigation={navigation} style={styles.container}>
+        <View />
+        {{#if wantMessages}}
+        <Message {...messages.title} />
+        {{/if}}
+      </PageView>
+    );
+  }
+}
+
+{{ properCase name }}Screen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+{{#if connectContainer}}
+  {{ lowerCase name }}: PropTypes.shape({
+    loading: PropTypes.bool,
+    error: PropTypes.bool,
+    data: PropTypes.array,
+  }).isRequired,
+{{/if}}
+
+};
+
+{{#if connectContainer}}
+export default with{{ properCase connectContainer }}({{ properCase name }}Screen);
+{{else}}
+export default {{ properCase name }}Screen;
+{{/if}}

@@ -1,0 +1,14 @@
+
+import * as actions from '../actions';
+import * as constants from '../constants';
+
+describe('{{ properCase name }} actions', () => {
+  describe('Fetch Action', () => {
+    it('has a type of FETCH', () => {
+      const expected = {
+        type: constants.FETCH,
+      };
+      expect(actions.fetch()).toEqual(expected);
+    });
+  });
+});

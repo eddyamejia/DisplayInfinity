@@ -1,0 +1,67 @@
+/*
+ *
+ * {{ properCase name }} actions
+ *
+ */
+
+import * as constants from './constants';
+
+export const fetch = (payload) => ({
+  type: constants.FETCH,
+  payload,
+});
+
+export const fetchSuccess = (payload) => ({
+  type: constants.FETCH_SUCCESS,
+  payload,
+});
+
+export const fetchFailure = (payload) => ({
+  type: constants.FETCH_FAILURE,
+  payload,
+});
+
+export const add = (payload) => ({
+  type: constants.ADD,
+  payload,
+});
+
+export const addSuccess = (payload) => ({
+  type: constants.ADD_SUCCESS,
+  payload,
+});
+
+export const addFailure = (payload) => ({
+  type: constants.ADD_FAILURE,
+  payload,
+});
+
+export const edit = (payload) => ({
+  type: constants.EDIT,
+  payload,
+});
+
+export const editSuccess = (payload) => ({
+  type: constants.EDIT_SUCCESS,
+  payload,
+});
+
+export const editFailure = (payload) => ({
+  type: constants.EDIT_FAILURE,
+  payload,
+});
+
+export const remove = (payload) => ({
+  type: constants.REMOVE,
+  payload,
+});
+
+export const removeSuccess = (payload) => ({
+  type: constants.REMOVE_SUCCESS,
+  payload,
+});
+
+export const removeFailure = (payload) => ({
+  type: constants.REMOVE_FAILURE,
+  payload,
+});

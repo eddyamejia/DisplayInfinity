@@ -1,0 +1,32 @@
+/**
+*
+* {{ properCase name }}Page
+*
+*/
+
+import React from 'react';
+{{#if wantMessages}}
+import { FormattedMessage } from 'react-intl';
+{{/if}}
+// import styled from 'styled-components';
+// import * as Styled from './Styled';
+
+{{#if wantMessages}}
+import messages from './messages';
+{{/if}}
+
+function {{ properCase name }}Page() {
+  return (
+    <div>
+    {{#if wantMessages}}
+      <FormattedMessage {...messages.header} />
+    {{/if}}
+    </div>
+  );
+}
+
+{{ properCase name }}Page.propTypes = {
+
+};
+
+export default {{ properCase name }}Page;

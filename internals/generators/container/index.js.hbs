@@ -1,0 +1,68 @@
+/*
+ *
+ * {{ properCase name }}
+ *
+ */
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import makeSelect{{properCase name}} from './selectors';
+import * as actions from './actions';
+
+export class {{ properCase name }} extends Component {
+  componentDidMount() {
+    if (!this.props.{{ properCase name }}.data.length) {
+      this.props.fetch();
+    }
+  }
+
+  render() {
+    return this.props.children({
+      ...this.props.{{ properCase name }},
+      remove: this.props.remove,
+      fetch: this.props.fetch,
+      edit: this.props.edit,
+      add: this.props.add,
+    });
+  }
+}
+
+{{ properCase name }}.propTypes = {
+  {{ properCase name }}: PropTypes.shape({
+    submitError: PropTypes.bool,
+    submitting: PropTypes.bool,
+    loading: PropTypes.bool,
+    error: PropTypes.bool,
+    data: PropTypes.array,
+  }).isRequired,
+  children: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
+  fetch: PropTypes.func.isRequired,
+  edit: PropTypes.func.isRequired,
+  add: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = createStructuredSelector({
+  {{ properCase name }}: makeSelect{{ properCase name }}(),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  remove: (p) => dispatch(actions.remove(p)),
+  fetch: (p) => dispatch(actions.fetch(p)),
+  edit: (p) => dispatch(actions.edit(p)),
+  add: (p) => dispatch(actions.add(p)),
+});
+
+const {{ properCase name }}Redux = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)({{ properCase name }});
+
+export const with{{ properCase name }} = (WrappedComponent) => (p) => (
+  <{{ properCase name }}Redux>{({{ camelCase name }}) => <WrappedComponent {{ camelCase name }}={ {{ camelCase name }} } {...p} /> }</{{ properCase name }}Redux>
+);
+
+export default {{ properCase name }}Redux;

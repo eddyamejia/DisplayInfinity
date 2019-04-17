@@ -1,0 +1,44 @@
+/**
+*
+* {{ properCase name }}
+*
+*/
+
+import React, { {{ type }} } from 'react';
+import { View, Text } from 'react-native';
+// import PropTypes from 'prop-types';
+
+{{#if wantMessages}}
+import Message from 'components/Message';
+{{/if}}
+
+{{#if wantMessages}}
+import messages from './messages';
+{{/if}}
+import styles from './styles';
+
+class {{ properCase name }} extends {{ type }} {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: 'VALUE',
+    };
+  }
+
+  render() {
+    // const { prop } = this.props;
+    const { value } = this.state;
+    return (
+      <View style={styles.container}>
+        {{#if wantMessages}}<Message {...messages.header} />{{/if}}
+        <Text>{value}</Text>
+      </View>
+    );
+  }
+}
+
+{{ properCase name }}.propTypes = {};
+{{ properCase name }}.defaultProps = {};
+
+export default {{ properCase name }};

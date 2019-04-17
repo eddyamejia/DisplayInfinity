@@ -1,0 +1,23 @@
+/**
+ *
+ * {{ properCase name }} Styles
+ *
+ */
+
+import { StyleSheet } from 'react-native';
+import { scaling } from 'rn-hgl/utils';
+
+// import dimensions from 'rn-hgl/dimensions';
+// import { isIOS } from 'rn-hgl/platform';
+
+import { colors } from 'configs';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: scaling(1),
+    backgroundColor: colors.white.string(),
+  },
+});
+
+export default styles;
